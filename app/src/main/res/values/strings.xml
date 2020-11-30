@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MeTutor</string>
+    <string name="add_student">Do you want to add a new student?</string>
+    <string name="hint_add">Enter the student\'s name</string>
+</resources>
