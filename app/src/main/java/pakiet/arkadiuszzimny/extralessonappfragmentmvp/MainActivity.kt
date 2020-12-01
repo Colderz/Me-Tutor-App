@@ -2,24 +2,21 @@ package pakiet.arkadiuszzimny.extralessonappfragmentmvp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_main.*
-import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.IMainPresenter
-import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.FirstFragment
-import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.IMainView
 import java.lang.ClassCastException
 
-class MainActivity : AppCompatActivity(), IMainView {
+class MainActivity : AppCompatActivity(), IMainActivityVP.View, IMainView{
 
-    internal lateinit var mainPresenter: IMainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         showFragment(R.id.fragmentContainer)
+
+    }
+
+    override fun setFragment(fragment: BaseFragment) {
 
     }
 

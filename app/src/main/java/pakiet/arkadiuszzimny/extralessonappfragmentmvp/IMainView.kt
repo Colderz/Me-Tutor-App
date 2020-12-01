@@ -1,4 +1,4 @@
-package pakiet.arkadiuszzimny.extralessonappfragmentmvp.views
+package pakiet.arkadiuszzimny.extralessonappfragmentmvp
 
 interface IMainView {
     fun showFragment(containerViewID: Int)

@@ -1,13 +1,12 @@
-package pakiet.arkadiuszzimny.extralessonappfragmentmvp.views
+package pakiet.arkadiuszzimny.extralessonappfragmentmvp
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(){
 
     companion object {
         fun newInstance() = FirstFragment()
