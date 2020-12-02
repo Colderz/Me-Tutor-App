@@ -5,32 +5,22 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import java.lang.ClassCastException
 
-class MainActivity : AppCompatActivity(), IMainActivityVP.View, IMainView{
+class MainActivity : AppCompatActivity(), IMainActivityVP.View {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showFragment(R.id.fragmentContainer)
+        var fragment = FirstFragment::class.java.newInstance() as BaseFragment
+        setFragment(fragment)
 
     }
 
     override fun setFragment(fragment: BaseFragment) {
-
-    }
-
-    override fun showFragment(containerViewID: Int) {
-        var fragment: Fragment? = null
-        var fragmentClass = FirstFragment::class.java
-        try {
-            fragment = fragmentClass.newInstance() as Fragment
-        } catch (e: ClassCastException) {
-            e.printStackTrace()
-        }
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(containerViewID, fragment!!)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
 
 
