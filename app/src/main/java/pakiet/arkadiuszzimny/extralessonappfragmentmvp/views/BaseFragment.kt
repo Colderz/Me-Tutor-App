@@ -1,6 +1,7 @@
-package pakiet.arkadiuszzimny.extralessonappfragmentmvp
+package pakiet.arkadiuszzimny.extralessonappfragmentmvp.views
 
 import androidx.fragment.app.Fragment
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentNavigation
 
 abstract class BaseFragment : Fragment(), IFragmentNavigation.View {
 

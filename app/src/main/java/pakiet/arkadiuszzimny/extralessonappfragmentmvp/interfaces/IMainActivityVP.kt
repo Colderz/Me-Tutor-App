@@ -1,4 +1,6 @@
-package pakiet.arkadiuszzimny.extralessonappfragmentmvp
+package pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces
+
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.BaseFragment
 
 interface IMainActivityVP {
     interface View {
