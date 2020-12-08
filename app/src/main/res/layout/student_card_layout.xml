@@ -15,10 +15,21 @@
         android:layout_height="60dp"
         android:orientation="horizontal">
 
-        <View
-            android:layout_width="16dp"
+        <LinearLayout
+            android:layout_width="25dp"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark"/>
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30 zł"
+                android:textColor="@android:color/white"
+                android:textSize="10dp"/>
+
+        </LinearLayout>
 
        <LinearLayout
            android:layout_width="wrap_content"
@@ -30,9 +41,19 @@
                android:layout_height="wrap_content"
                android:textStyle="bold"
                android:text="Klaudia"
-
                android:paddingStart="12dp"
-               android:layout_marginVertical="5dp"/>
+               android:layout_marginTop="5dp"/>
+
+           <TextView
+               android:id="@+id/classText"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="III Liceum"
+               android:layout_marginStart="12dp"
+               android:layout_marginTop="1dp"
+               android:textSize="7dp"
+               android:padding="3dp"
+               android:background="@drawable/textview_border"/>
 
 
        </LinearLayout>
