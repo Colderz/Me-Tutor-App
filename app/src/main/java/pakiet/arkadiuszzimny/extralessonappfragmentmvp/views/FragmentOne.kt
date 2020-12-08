@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_first.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
@@ -17,15 +19,21 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         fun newInstance() = FragmentOne()
     }
 
-    internal lateinit var fragmentOnePresenter: FragmentOnePresenter
+    private lateinit var fragmentOnePresenter: FragmentOnePresenter
+    private lateinit var recyclerAdapter: MainAdapterRV
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var mView: View = inflater.inflate(R.layout.fragment_first, container, false)
+        var rv:RecyclerView = mView.findViewById(R.id.recyclerView)
+        rv.layoutManager
+        recyclerAdapter = MainAdapterRV()
+        rv.adapter = MainAdapterRV()
         fragmentOnePresenter = FragmentOnePresenter()
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return mView
     }
 
     override fun onResume() {
