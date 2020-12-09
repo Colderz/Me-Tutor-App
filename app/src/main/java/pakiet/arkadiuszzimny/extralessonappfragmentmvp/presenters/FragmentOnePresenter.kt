@@ -10,6 +10,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.BaseFragment
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.FragmentOne
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.MainAdapterRV
@@ -47,6 +48,13 @@ class FragmentOnePresenter: IFragmentOneVP.Presenter {
             }
         }).into(imageView)
     }
+
+    override fun initData() {
+        var studentList: ArrayList<Student> = ArrayList<Student>()
+        studentList.add(Student(1, "Klaudia", "III Liceum", "30 zł"))
+        // TUTAJ PODŁĄCZENIE FIREBASE, UZUPEŁNIENIE DANYCH, DODANIE DANYCH DO LISTY NA PODST. DATABASE REALTIME
+    }
+
 
 
 

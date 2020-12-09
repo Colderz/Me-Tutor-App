@@ -8,7 +8,7 @@ import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 
-class MainAdapterRV(): RecyclerView.Adapter<MainAdapterRV.ViewHolder>() {
+class MainAdapterRV(/*private val dataArrayList: ArrayList<Student>*/): RecyclerView.Adapter<MainAdapterRV.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainAdapterRV.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.student_card_layout, parent, false)
         return ViewHolder(v)

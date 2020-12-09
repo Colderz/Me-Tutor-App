@@ -33,6 +33,7 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         recyclerAdapter = MainAdapterRV()
         rv.adapter = MainAdapterRV()
         fragmentOnePresenter = FragmentOnePresenter()
+        fragmentOnePresenter.initData()
         return mView
     }
 

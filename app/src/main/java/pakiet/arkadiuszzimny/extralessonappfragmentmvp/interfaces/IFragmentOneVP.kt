@@ -11,5 +11,6 @@ interface IFragmentOneVP {
 
     interface Presenter{
        fun loadImageUsingGlide(fragment: BaseFragment, progressBar: ProgressBar, imageView: ImageView)
+       fun initData()
     }
 }

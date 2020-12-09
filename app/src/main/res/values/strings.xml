@@ -4,4 +4,5 @@
     <string name="hint_add">Enter the student\'s name</string>
     <string name="textCardView1">Notes from lesson</string>
     <string name="list">List of students</string>
+    <string name="nextLesson">Scheduled lesson</string>
 </resources>
