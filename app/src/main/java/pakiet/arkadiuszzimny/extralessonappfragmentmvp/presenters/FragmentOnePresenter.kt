@@ -57,7 +57,6 @@ class FragmentOnePresenter: IFragmentOneVP.Presenter {
     override fun initData() {
         var studentList: ArrayList<Student> = ArrayList<Student>()
         studentList.add(Student(1, "Klaudia", "III Liceum", "30 zł"))
-        // TUTAJ PODŁĄCZENIE FIREBASE, UZUPEŁNIENIE DANYCH, DODANIE DANYCH DO LISTY NA PODST. DATABASE REALTIME
         val firebase = FirebaseDatabase.getInstance()
         myRef = firebase.getReference("ArrayData")
 
