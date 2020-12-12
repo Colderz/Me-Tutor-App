@@ -9,14 +9,19 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.BaseFragment
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.FragmentOne
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.MainAdapterRV
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FragmentOnePresenter: IFragmentOneVP.Presenter {
 
+    private lateinit var myRef: DatabaseReference
     private val imageUrl_1 = "https://images.unsplash.com/photo-1521927336940-cae6e9f22945?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
 
     override fun loadImageUsingGlide(
@@ -53,6 +58,13 @@ class FragmentOnePresenter: IFragmentOneVP.Presenter {
         var studentList: ArrayList<Student> = ArrayList<Student>()
         studentList.add(Student(1, "Klaudia", "III Liceum", "30 zł"))
         // TUTAJ PODŁĄCZENIE FIREBASE, UZUPEŁNIENIE DANYCH, DODANIE DANYCH DO LISTY NA PODST. DATABASE REALTIME
+        val firebase = FirebaseDatabase.getInstance()
+        myRef = firebase.getReference("ArrayData")
+
+    }
+
+    fun addFirebaseData(name: String) {
+        myRef.child("${Date().time}").setValue(name)
     }
 
 

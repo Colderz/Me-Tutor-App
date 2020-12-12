@@ -34,8 +34,21 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         rv.adapter = MainAdapterRV()
         fragmentOnePresenter = FragmentOnePresenter()
         fragmentOnePresenter.initData()
+
         return mView
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        buttonAdd.setOnClickListener {
+            triggerAddition()
+            studentName.text.clear()
+        }
+    }
+
+    private fun triggerAddition() {
+        fragmentOnePresenter.addFirebaseData(studentName.text.toString())
+    }
+
 
     override fun onResume() {
         super.onResume()
