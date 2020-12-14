@@ -9,9 +9,8 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.firebase.database.DatabaseReference
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
-import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.StudentPojo
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils.FirebaseManager
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.BaseFragment
 import java.util.*
@@ -53,8 +52,8 @@ class FragmentOnePresenter: IFragmentOneVP.Presenter {
     }
 
     override fun initData() {
-        var studentList: ArrayList<StudentPojo> = ArrayList<StudentPojo>()
-        studentList.add(StudentPojo(1, "Klaudia", "III Liceum", "30 zł"))
+        var studentList: ArrayList<Student> = ArrayList<Student>()
+        studentList.add(Student(1, "Klaudia", "III Liceum", "30 zł"))
         fireManager = FirebaseManager("ArrayData")
     }
 

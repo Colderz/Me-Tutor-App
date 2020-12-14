@@ -2,20 +2,24 @@ package pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils
 
 import com.google.firebase.database.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.DatabaseRow
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.StudentModel
 import java.util.*
 
 class FirebaseManager(pathName: String) {
 
-    var firebase: FirebaseDatabase
-    var pathName = pathName
+    val firebase: FirebaseDatabase
+    val pathName = pathName
+    val studentModel: StudentModel
 
     init {
         firebase = FirebaseDatabase.getInstance()
+        studentModel = StudentModel()
         getReference().addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (i in snapshot.children) {
                     val newId = i.key!!.toLong()
-                    val newRow = i.getValue()
+                    val newRow = i.getValue(DatabaseRow::class.java)
+                    studentModel.initStudentLists(newRow!!)
                 }
             }
             override fun onCancelled(error: DatabaseError) {}
