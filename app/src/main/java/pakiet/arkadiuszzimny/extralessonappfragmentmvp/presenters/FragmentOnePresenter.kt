@@ -59,7 +59,9 @@ class FragmentOnePresenter: IFragmentOneVP.Presenter {
     }
 
     fun addFirebaseData(name: String) {
-        fireManager.addData(Date().time, name)
+        val level = "No level of learning"
+        val cost = "Lack"
+        fireManager.addData(Date().time, name, level, cost)
     }
 
 
