@@ -23,9 +23,10 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/costText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="30 zł"
+                android:text=""
                 android:textColor="@android:color/white"
                 android:textSize="10dp"/>
 
@@ -38,10 +39,11 @@
            android:gravity="center">
 
            <TextView
+               android:id="@+id/studentName"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textStyle="bold"
-               android:text="Klaudia"
+               android:text=""
                android:paddingStart="32dp"
                android:textColor="@android:color/black"
                android:textSize="17sp"/>
@@ -50,13 +52,20 @@
                android:id="@+id/classText"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="III Liceum"
+               android:text=""
                android:layout_marginTop="1dp"
                android:layout_marginStart="5dp"
                android:textSize="7sp"
                android:padding="3dp"
                android:textColor="@android:color/black"
                android:background="@drawable/textview_border"/>
+
+           <TextView
+               android:id="@+id/idTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="0.1sp"
+               android:textColor="@android:color/transparent"/>
 
 
        </LinearLayout>

@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.FragmentOnePresenter
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils.FirebaseManager
 
 class FragmentOne : BaseFragment(), IFragmentOneVP.View {
 
@@ -21,20 +22,20 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
 
     private lateinit var fragmentOnePresenter: FragmentOnePresenter
     private lateinit var recyclerAdapter: MainAdapterRV
+    private lateinit var fireManager: FirebaseManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fireManager = FirebaseManager("ArrayData")
+        fragmentOnePresenter = FragmentOnePresenter(fireManager)
         var mView: View = inflater.inflate(R.layout.fragment_first, container, false)
         var rv:RecyclerView = mView.findViewById(R.id.recyclerView)
-        rv.layoutManager
-        recyclerAdapter = MainAdapterRV()
-        rv.adapter = MainAdapterRV()
-        fragmentOnePresenter = FragmentOnePresenter()
+        recyclerAdapter = MainAdapterRV(fragmentOnePresenter.getDisplayListFromModel())
+        rv.adapter = MainAdapterRV(fragmentOnePresenter.getDisplayListFromModel())
         fragmentOnePresenter.initData()
-
         return mView
     }
 

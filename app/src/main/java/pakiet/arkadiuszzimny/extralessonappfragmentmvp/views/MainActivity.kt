@@ -10,9 +10,7 @@ import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IMainActivityV
 
 class MainActivity : AppCompatActivity(), IMainActivityVP.View {
 
-
-    internal lateinit var mainPresenter: MainActivityPresenter
-
+    private lateinit var mainPresenter: MainActivityPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +18,7 @@ class MainActivity : AppCompatActivity(), IMainActivityVP.View {
 
         var fragment = FragmentOne::class.java.newInstance() as BaseFragment
         setFragment(fragment)
-
         mainPresenter = MainActivityPresenter(this)
-
-
     }
 
     override fun setFragment(fragment: BaseFragment) {
