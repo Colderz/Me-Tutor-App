@@ -1,5 +1,6 @@
 package pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils
 
+import android.util.Log
 import com.google.firebase.database.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.DatabaseRow
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.StudentModel
@@ -16,11 +17,7 @@ class FirebaseManager(pathName: String) {
         studentModel = StudentModel()
         getReference().addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children) {
-                    val newId = i.key!!.toLong()
-                    val newRow = i.getValue(DatabaseRow::class.java)
-                    studentModel.initStudentLists(newRow!!)
-                }
+                studentModel.initStudentLists(snapshot)
             }
             override fun onCancelled(error: DatabaseError) {}
         })
