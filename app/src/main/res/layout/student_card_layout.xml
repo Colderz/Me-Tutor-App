@@ -60,13 +60,6 @@
                android:textColor="@android:color/black"
                android:background="@drawable/textview_border"/>
 
-           <TextView
-               android:id="@+id/idTextView"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="0.1sp"
-               android:textColor="@android:color/transparent"/>
-
 
        </LinearLayout>
 

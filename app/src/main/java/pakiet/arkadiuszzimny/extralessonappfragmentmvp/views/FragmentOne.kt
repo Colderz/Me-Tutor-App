@@ -6,13 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_first.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.FragmentOnePresenter
-import pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils.FirebaseManager
 
 class FragmentOne : BaseFragment(), IFragmentOneVP.View {
 
@@ -21,21 +23,26 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
     }
 
     private lateinit var fragmentOnePresenter: FragmentOnePresenter
-    private lateinit var recyclerAdapter: MainAdapterRV
-    private lateinit var fireManager: FirebaseManager
+    private lateinit var listOfPeople: LiveData<List<Student>>
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var daoAdapter: MainAdapterRV
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        fireManager = FirebaseManager("ArrayData")
-        fragmentOnePresenter = FragmentOnePresenter(fireManager)
+        fragmentOnePresenter = FragmentOnePresenter(requireActivity().application)
         var mView: View = inflater.inflate(R.layout.fragment_first, container, false)
-        var rv:RecyclerView = mView.findViewById(R.id.recyclerView)
-        recyclerAdapter = MainAdapterRV(fragmentOnePresenter.getDisplayListFromModel())
-        rv.adapter = MainAdapterRV(fragmentOnePresenter.getDisplayListFromModel())
-        fragmentOnePresenter.initData()
+        recyclerView = mView.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext().applicationContext)
+        listOfPeople = fragmentOnePresenter.getAllPeople()
+        listOfPeople.observe(this, Observer {
+            if (it.isNotEmpty()) {
+                daoAdapter = MainAdapterRV(it)
+                recyclerView.adapter = daoAdapter
+            }
+        })
         return mView
     }
 
@@ -47,7 +54,8 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
     }
 
     private fun triggerAddition() {
-        fragmentOnePresenter.addFirebaseData(studentName.text.toString())
+        val student = Student(studentName.text.toString(), "No level of learning", "Lack")
+        fragmentOnePresenter.insertStudent(student)
     }
 
 
