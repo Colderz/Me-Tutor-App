@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#232323"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Klaudia"
+            android:id="@+id/dialogName"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:layout_marginTop="85dp"/>
+
+        <TextView
+            android:id="@+id/subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Editing"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:id="@+id/studentId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="1sp"
+            android:textColor="@android:color/transparent"/>
+
+
+        <EditText
+            android:id="@+id/studentLevel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:drawablePadding="12dp"
+            android:paddingLeft="10dp"
+            android:inputType="textPersonName"
+            android:hint="Enter the class"
+            android:textSize="13sp"
+            android:drawableStart="@drawable/ic_baseline_school_24" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/lightGray" />
+
+        <EditText
+            android:id="@+id/studentCost"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingLeft="10dp"
+            android:background="@android:color/white"
+            android:drawablePadding="12dp"
+            android:inputType="textPersonName"
+            android:hint="Enter your rate"
+            android:textSize="13sp"
+            android:drawableStart="@drawable/ic_baseline_monetization_on_24" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/lightGray" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#232323"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:text="Submit" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/lightGray" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:background="#232323"
+            android:layout_height="50dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:text="Cancel" />
+
+
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:src="@drawable/studentjpg"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"/>
+
+</RelativeLayout>
+
+

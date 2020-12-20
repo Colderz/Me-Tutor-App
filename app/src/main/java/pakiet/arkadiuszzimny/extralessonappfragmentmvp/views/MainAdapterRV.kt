@@ -1,15 +1,19 @@
 package pakiet.arkadiuszzimny.extralessonappfragmentmvp.views
 
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.view.menu.ActionMenuItemView
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_first.view.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 
-class MainAdapterRV(private val dataArrayList: List<Student>): RecyclerView.Adapter<MainAdapterRV.ViewHolder>() {
+class MainAdapterRV(private val dataArrayList: List<Student>, private val fm: FragmentManager): RecyclerView.Adapter<MainAdapterRV.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainAdapterRV.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.student_card_layout, parent, false)
         return ViewHolder(v)
@@ -34,6 +38,11 @@ class MainAdapterRV(private val dataArrayList: List<Student>): RecyclerView.Adap
             personName = itemView.findViewById(R.id.studentName)
             personLevel = itemView.findViewById(R.id.classText)
             personCost = itemView.findViewById(R.id.costText)
+            itemView.setOnClickListener {
+                var dialogInstance = EditDialogFragment.newInstance(personName.text.toString(), "Editing")
+                dialogInstance.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.CustomDialog)
+                dialogInstance.show(fm, EditDialogFragment.TAG)
+            }
         }
 
     }

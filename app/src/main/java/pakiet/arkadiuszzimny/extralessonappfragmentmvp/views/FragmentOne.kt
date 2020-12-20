@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,6 +33,7 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val fm = fragmentManager
         fragmentOnePresenter = FragmentOnePresenter(requireActivity().application)
         var mView: View = inflater.inflate(R.layout.fragment_first, container, false)
         recyclerView = mView.findViewById(R.id.recyclerView)
@@ -39,7 +41,7 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         listOfPeople = fragmentOnePresenter.getAllPeople()
         listOfPeople.observe(this, Observer {
             if (it.isNotEmpty()) {
-                daoAdapter = MainAdapterRV(it)
+                daoAdapter = MainAdapterRV(it, fm!!)
                 recyclerView.adapter = daoAdapter
             }
         })
@@ -54,7 +56,7 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
     }
 
     private fun triggerAddition() {
-        val student = Student(studentName.text.toString(), "No level of learning", "Lack")
+        val student = Student(studentName.text.toString(), "No level", "Lack")
         fragmentOnePresenter.insertStudent(student)
     }
 
