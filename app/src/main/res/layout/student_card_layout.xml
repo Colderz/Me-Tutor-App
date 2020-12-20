@@ -36,7 +36,7 @@
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:orientation="vertical"
-           android:gravity="center">
+           android:gravity="start">
 
            <TextView
                android:id="@+id/studentName"
@@ -44,7 +44,8 @@
                android:layout_height="wrap_content"
                android:textStyle="bold"
                android:text=""
-               android:paddingStart="32dp"
+               android:paddingTop="10dp"
+               android:paddingStart="12dp"
                android:textColor="@android:color/black"
                android:textSize="17sp"/>
 
@@ -54,10 +55,10 @@
                android:layout_height="wrap_content"
                android:text=""
                android:layout_marginTop="1dp"
-               android:layout_marginStart="5dp"
-               android:textSize="7sp"
-               android:padding="3dp"
-               android:textColor="@android:color/black"
+               android:layout_marginStart="12dp"
+               android:textSize="8sp"
+               android:padding="2dp"
+               android:textColor="@android:color/darker_gray"
                android:background="@drawable/textview_border"/>
 
 

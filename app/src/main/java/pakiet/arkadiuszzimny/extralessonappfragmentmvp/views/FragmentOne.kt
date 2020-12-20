@@ -41,7 +41,7 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         listOfPeople = fragmentOnePresenter.getAllPeople()
         listOfPeople.observe(this, Observer {
             if (it.isNotEmpty()) {
-                daoAdapter = MainAdapterRV(it, fm!!)
+                daoAdapter = MainAdapterRV(it, fm!!, fragmentOnePresenter)
                 recyclerView.adapter = daoAdapter
             }
         })

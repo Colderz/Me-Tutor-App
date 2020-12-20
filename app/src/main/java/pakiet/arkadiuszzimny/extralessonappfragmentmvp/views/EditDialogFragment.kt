@@ -9,10 +9,17 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.dialog_layout.view.*
+import kotlinx.android.synthetic.main.fragment_first.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.FragmentOnePresenter
 
-class EditDialogFragment: DialogFragment() {
+class EditDialogFragment(private val FOpresenter: FragmentOnePresenter): DialogFragment() {
+
+    private lateinit var levelET: EditText
+    private lateinit var costET: EditText
 
     companion object {
 
@@ -20,11 +27,11 @@ class EditDialogFragment: DialogFragment() {
         private const val KEY_TITLE = "KEY_TITLE"
         private const val KEY_SUBTITLE = "KEY_SUBTITLE"
 
-        fun newInstance(title: String, subTitle: String): EditDialogFragment {
+        fun newInstance(title: String, subTitle: String, presenter: FragmentOnePresenter): EditDialogFragment {
             val args = Bundle()
             args.putString(KEY_TITLE, title)
             args.putString(KEY_SUBTITLE, subTitle)
-            val fragment = EditDialogFragment()
+            val fragment = EditDialogFragment(presenter)
             fragment.arguments = args
             return fragment
         }
@@ -42,11 +49,14 @@ class EditDialogFragment: DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupView(view)
         setupClickListeners(view)
+        levelET = view.findViewById<EditText>(R.id.studentLevel)
+        costET = view.findViewById<EditText>(R.id.studentCost)
     }
 
     private fun setupView(view: View) {
         view.dialogName.text = arguments?.getString(KEY_TITLE)
         view.subTitle.text = arguments?.getString(KEY_SUBTITLE)
+
     }
 
     private fun setupClickListeners(view: View) {
@@ -54,7 +64,11 @@ class EditDialogFragment: DialogFragment() {
             dismiss()
         }
         view.saveButton.setOnClickListener {
-            // TODO: Do some task here
+            var level: String = levelET.text.toString()
+            var cost: String = costET.text.toString()
+            var newStudent = Student(arguments?.getString(KEY_TITLE).toString(), level, cost)
+            FOpresenter.insertStudent(newStudent)
+            dismiss()
         }
     }
 
