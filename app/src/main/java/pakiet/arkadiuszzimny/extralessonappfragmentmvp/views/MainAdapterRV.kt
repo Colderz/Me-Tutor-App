@@ -50,16 +50,12 @@ class MainAdapterRV(private val dataArrayList: List<Student>, private val fm: Fr
                 var dialogInstance = EditDialogFragment.newInstance(personName.text.toString(), "Editing", presenter)
                 dialogInstance.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.CustomDialog)
                 dialogInstance.show(fm, EditDialogFragment.TAG)
-                if(dialogInstance != null) Log.d("DIALOG", "WIDOCZNY!")
                 GlobalScope.launch {
                     while(true) {
                         if(dialogInstance.isRemoving) {
-                            Log.d("DIALOG", "NIEWIDOCZNY!")
                             break
                         }
                     }
-                    Log.d("DIALOG", "WYSZEDŁEM!")
-                    Log.d("DIALOG", "to to id ${idText}")
                     presenter.deleteStudent(idText.text.toString())
                 }
 
