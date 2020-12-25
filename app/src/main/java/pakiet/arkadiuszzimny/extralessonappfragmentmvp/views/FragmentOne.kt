@@ -16,6 +16,7 @@ import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.FragmentOnePresenter
+import java.util.*
 
 class FragmentOne : BaseFragment(), IFragmentOneVP.View {
 
@@ -56,7 +57,7 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
     }
 
     private fun triggerAddition() {
-        val student = Student(studentName.text.toString(), "No level", "Lack")
+        val student = Student(studentName.text.toString(), "No level", "Lack", Date().time.toString())
         fragmentOnePresenter.insertStudent(student)
     }
 

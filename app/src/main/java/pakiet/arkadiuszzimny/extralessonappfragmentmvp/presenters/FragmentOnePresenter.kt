@@ -2,6 +2,7 @@ package pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters
 
 import android.app.Application
 import android.graphics.drawable.Drawable
+import android.icu.text.Transliterator
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -67,8 +68,8 @@ class FragmentOnePresenter(application: Application): IFragmentOneVP.Presenter {
         studentRepository.updateStudent(student)
     }
 
-    fun deleteStudent(student: Student) {
-        studentRepository.deleteStudent(student)
+    fun deleteStudent(randomId: String) {
+        studentRepository.deleteStudent(randomId)
     }
 
     //Coroutine

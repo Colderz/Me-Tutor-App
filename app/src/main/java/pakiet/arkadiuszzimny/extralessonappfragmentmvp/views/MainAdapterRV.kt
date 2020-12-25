@@ -1,6 +1,7 @@
 package pakiet.arkadiuszzimny.extralessonappfragmentmvp.views
 
 import android.app.Dialog
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,9 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_first.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.FragmentOnePresenter
@@ -24,6 +28,7 @@ class MainAdapterRV(private val dataArrayList: List<Student>, private val fm: Fr
         holder.personName.text = dataArrayList[position].name
         holder.personLevel.text = dataArrayList[position].level
         holder.personCost.text = dataArrayList[position].cost
+        holder.idText.text = dataArrayList[position].randomId
     }
 
     override fun getItemCount(): Int {
@@ -34,15 +39,30 @@ class MainAdapterRV(private val dataArrayList: List<Student>, private val fm: Fr
         val personName: TextView
         val personLevel: TextView
         val personCost: TextView
+        val idText: TextView
 
         init {
             personName = itemView.findViewById(R.id.studentName)
             personLevel = itemView.findViewById(R.id.classText)
             personCost = itemView.findViewById(R.id.costText)
+            idText = itemView.findViewById(R.id.idText)
             itemView.setOnClickListener {
                 var dialogInstance = EditDialogFragment.newInstance(personName.text.toString(), "Editing", presenter)
                 dialogInstance.setStyle(DialogFragment.STYLE_NO_TITLE, R.style.CustomDialog)
                 dialogInstance.show(fm, EditDialogFragment.TAG)
+                if(dialogInstance != null) Log.d("DIALOG", "WIDOCZNY!")
+                GlobalScope.launch {
+                    while(true) {
+                        if(dialogInstance.isRemoving) {
+                            Log.d("DIALOG", "NIEWIDOCZNY!")
+                            break
+                        }
+                    }
+                    Log.d("DIALOG", "WYSZEDŁEM!")
+                    Log.d("DIALOG", "to to id ${idText}")
+                    presenter.deleteStudent(idText.text.toString())
+                }
+
             }
         }
 

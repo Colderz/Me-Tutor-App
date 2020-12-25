@@ -13,8 +13,8 @@ interface StudentDAO {
     @Update
     fun update(student: Student)
 
-    @Delete
-    fun delete(student: Student)
+    @Query("DELETE FROM student_table WHERE randomId = :randomId")
+    fun delete(randomId: String)
 
     @Query("SELECT * FROM student_table")
     fun getAllStudents(): LiveData<List<Student>>

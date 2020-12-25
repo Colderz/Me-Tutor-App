@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.StudentDAO
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 
-@Database(entities = [Student::class], version = 1, exportSchema = false)
+@Database(entities = [Student::class], version = 3, exportSchema = false)
 abstract class StudentDatabase: RoomDatabase() {
 
     abstract fun studentDao(): StudentDAO

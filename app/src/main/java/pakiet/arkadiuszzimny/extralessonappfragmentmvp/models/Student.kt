@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "student_table")
-data class Student(var name: String, var level: String, var cost: String) {
+data class Student(var name: String, var level: String, var cost: String, var randomId: String) {
 
     @PrimaryKey(autoGenerate = true)
     var user_id: Int = 0

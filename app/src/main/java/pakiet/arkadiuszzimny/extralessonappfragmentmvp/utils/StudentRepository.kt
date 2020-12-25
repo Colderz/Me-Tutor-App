@@ -1,6 +1,7 @@
 package pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils
 
 import android.app.Application
+import android.icu.text.Transliterator
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.StudentDAO
@@ -20,7 +21,7 @@ class StudentRepository(application: Application) {
 
     fun updateStudent(student: Student) =  CoroutineScope(Dispatchers.IO).launch { studentDao.update(student) }
 
-    fun deleteStudent(student: Student) = CoroutineScope(Dispatchers.IO).launch { studentDao.delete(student) }
+    fun deleteStudent(randomId: String) = CoroutineScope(Dispatchers.IO).launch { studentDao.delete(randomId) }
 
     fun getAllStudentsAsync(): Deferred<LiveData<List<Student>>> = CoroutineScope(Dispatchers.IO).async { studentDao.getAllStudents() }
 

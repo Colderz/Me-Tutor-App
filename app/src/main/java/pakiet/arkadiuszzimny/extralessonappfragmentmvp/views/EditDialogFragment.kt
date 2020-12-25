@@ -9,12 +9,14 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.LiveData
 import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.android.synthetic.main.dialog_layout.view.*
 import kotlinx.android.synthetic.main.fragment_first.*
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.R
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.presenters.FragmentOnePresenter
+import java.util.*
 
 class EditDialogFragment(private val FOpresenter: FragmentOnePresenter): DialogFragment() {
 
@@ -26,16 +28,18 @@ class EditDialogFragment(private val FOpresenter: FragmentOnePresenter): DialogF
         const val TAG = "EditDialog"
         private const val KEY_TITLE = "KEY_TITLE"
         private const val KEY_SUBTITLE = "KEY_SUBTITLE"
+        private lateinit var fragment: EditDialogFragment
 
         fun newInstance(title: String, subTitle: String, presenter: FragmentOnePresenter): EditDialogFragment {
             val args = Bundle()
             args.putString(KEY_TITLE, title)
             args.putString(KEY_SUBTITLE, subTitle)
-            val fragment = EditDialogFragment(presenter)
+            fragment = EditDialogFragment(presenter)
             fragment.arguments = args
             return fragment
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,6 +63,7 @@ class EditDialogFragment(private val FOpresenter: FragmentOnePresenter): DialogF
 
     }
 
+
     private fun setupClickListeners(view: View) {
         view.cancelButton.setOnClickListener {
             dismiss()
@@ -66,8 +71,9 @@ class EditDialogFragment(private val FOpresenter: FragmentOnePresenter): DialogF
         view.saveButton.setOnClickListener {
             var level: String = levelET.text.toString()
             var cost: String = costET.text.toString()
-            var newStudent = Student(arguments?.getString(KEY_TITLE).toString(), level, cost)
+            var newStudent = Student(arguments?.getString(KEY_TITLE).toString(), level, cost, Date().time.toString())
             FOpresenter.insertStudent(newStudent)
+
             dismiss()
         }
     }
