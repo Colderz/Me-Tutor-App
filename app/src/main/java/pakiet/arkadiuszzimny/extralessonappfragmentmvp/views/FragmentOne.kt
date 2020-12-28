@@ -72,20 +72,5 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
         fragmentOnePresenter.loadImageUsingGlide(fragment, progressBar, imageView)
     }
 
-    private var simpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-        override fun onMove(
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            target: RecyclerView.ViewHolder
-        ): Boolean {
-            return true
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            fragmentOnePresenter.swipeToDelete(viewHolder, direction)
-        }
-
-    }
-
 
 }

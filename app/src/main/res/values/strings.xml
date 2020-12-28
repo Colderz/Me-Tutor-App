@@ -6,4 +6,6 @@
     <string name="list">List of students</string>
     <string name="nextLesson">Scheduled lesson</string>
     <string name="clickEdit">Touch to edit</string>
+    <string name="lessons_drawer">Scheduled lessons</string>
+    <string name="info">App info</string>
 </resources>
