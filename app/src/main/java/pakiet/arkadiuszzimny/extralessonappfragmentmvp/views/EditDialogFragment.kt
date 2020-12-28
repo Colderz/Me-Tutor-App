@@ -65,9 +65,6 @@ class EditDialogFragment(private val FOpresenter: FragmentOnePresenter): DialogF
 
 
     private fun setupClickListeners(view: View) {
-        view.cancelButton.setOnClickListener {
-            dismiss()
-        }
         view.saveButton.setOnClickListener {
             var level: String = levelET.text.toString()
             var cost: String = costET.text.toString()

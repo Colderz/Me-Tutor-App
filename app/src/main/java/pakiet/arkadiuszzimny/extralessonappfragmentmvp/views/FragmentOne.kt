@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_first.*
@@ -69,6 +70,21 @@ class FragmentOne : BaseFragment(), IFragmentOneVP.View {
 
     fun setImage(fragment: BaseFragment, progressBar: ProgressBar, imageView: ImageView) {
         fragmentOnePresenter.loadImageUsingGlide(fragment, progressBar, imageView)
+    }
+
+    private var simpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return true
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            fragmentOnePresenter.swipeToDelete(viewHolder, direction)
+        }
+
     }
 
 

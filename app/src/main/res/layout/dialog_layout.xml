@@ -84,20 +84,6 @@
             android:textSize="12sp"
             android:text="Submit" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/lightGray" />
-
-        <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="match_parent"
-            android:background="#232323"
-            android:layout_height="50dp"
-            android:textColor="@android:color/white"
-            android:textSize="12sp"
-            android:text="Cancel" />
-
 
 
     </LinearLayout>

@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -18,6 +20,7 @@ import pakiet.arkadiuszzimny.extralessonappfragmentmvp.interfaces.IFragmentOneVP
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.models.Student
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.utils.StudentRepository
 import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.BaseFragment
+import pakiet.arkadiuszzimny.extralessonappfragmentmvp.views.MainAdapterRV
 
 class FragmentOnePresenter(application: Application): IFragmentOneVP.Presenter {
 
@@ -79,6 +82,15 @@ class FragmentOnePresenter(application: Application): IFragmentOneVP.Presenter {
 
     fun deleteAllRows() {
         studentRepository
+    }
+
+    fun swipeToDelete(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+        var position = viewHolder.adapterPosition
+        when(direction) {
+            ItemTouchHelper.LEFT -> {
+
+            }
+        }
     }
 
 
