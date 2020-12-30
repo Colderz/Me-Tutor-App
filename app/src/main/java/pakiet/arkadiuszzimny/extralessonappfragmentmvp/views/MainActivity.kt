@@ -6,7 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,9 +31,10 @@ class MainActivity : AppCompatActivity(), IMainActivityVP.View {
         mainPresenter = MainActivityPresenter(this)
 
         navigationView.setNavigationItemSelectedListener{
-            selectDrawerItem(it)
+            selectDrawerItem(it, supportFragmentManager, drawerLayout)
             true
         }
+
     }
 
     override fun setFragment(fragment: BaseFragment) {
@@ -40,20 +43,8 @@ class MainActivity : AppCompatActivity(), IMainActivityVP.View {
             .commit()
     }
 
-    private fun selectDrawerItem(item: MenuItem) {
-        var fragment: Fragment? = null
-        val fragmentClass = when (item.itemId) {
-            R.id.nav_start -> FragmentOne::class.java
-            R.id.nav_scheduled -> FragmentScheduled::class.java
-            else -> FragmentOne::class.java
-        }
-        try {
-            fragment = fragmentClass.newInstance() as Fragment
-        } catch (e: ClassCastException) {
-            e.printStackTrace()
-        }
-        replaceFragment(fragment)
-        drawerLayout.closeDrawer(GravityCompat.START)
+    private fun selectDrawerItem(item: MenuItem, sfm: FragmentManager, drawer: DrawerLayout) {
+        mainPresenter.prepareDrawerHandle(item, sfm, drawer)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -61,11 +52,7 @@ class MainActivity : AppCompatActivity(), IMainActivityVP.View {
         return true
     }
 
-    private fun replaceFragment(fragment: Fragment?) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment!!)
-        fragmentTransaction.commit()
-    }
+
 
 
 }

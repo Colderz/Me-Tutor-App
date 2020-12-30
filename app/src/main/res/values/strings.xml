@@ -9,4 +9,5 @@
     <string name="lessons_drawer">Scheduled lessons</string>
     <string name="info">App info</string>
     <string name="start_app">Startup screen</string>
+    <string name="date">Date of the lesson</string>
 </resources>
